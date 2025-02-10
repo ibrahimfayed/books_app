@@ -1,3 +1,4 @@
+import 'package:books_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class SplashViewBody extends StatelessWidget {
@@ -5,6 +6,23 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column();
+    return  Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      //crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        
+        Center(
+          child: Image.asset(
+          width: 190,
+          AssetsData.logo,
+          fit: BoxFit.cover,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        const Text('Read Free Books')
+      ],
+    );
   }
 }
