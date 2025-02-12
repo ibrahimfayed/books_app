@@ -1,6 +1,9 @@
+import 'package:books_app/constants.dart';
 import 'package:books_app/core/utils/assets.dart';
+import 'package:books_app/features/home/presentaion/views/home_view.dart';
 import 'package:books_app/features/splash/presentaion/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -21,24 +24,12 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   void initState() {
 
     super.initState();
-    animationcontroller = AnimationController(
-      vsync:this,duration:const Duration(
-        seconds: 1),//the animation will run for 1 minute
-         );
-    slidingAnimation =
-      Tween<Offset>(
-        begin:const Offset(0, 10),
-        end:Offset.zero 
-        ).animate(animationcontroller);//<here i put the type of values i want to return to me>     
-   
-   
-  //  slidingAnimation.addListener((){
-  //   setState(() {
-      
-  //   });
-  //  });
-   animationcontroller.forward();//You need to call animationcontroller.forward() to start the animation. 
+    initSlidingAnimation();//You need to call animationcontroller.forward() to start the animation. 
+    navigateToHome();
   }
+
+  
+  
   @override
   void dispose() //to not operate all time
   {
@@ -67,5 +58,27 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
       ],
     );
   }
+  void initSlidingAnimation() {
+    animationcontroller = AnimationController(
+      vsync:this,duration:const Duration(
+        seconds: 1),//the animation will run for 1 minute
+         );
+    slidingAnimation =
+      Tween<Offset>(
+        begin:const Offset(0, 10),
+        end:Offset.zero 
+        ).animate(animationcontroller);//<here i put the type of values i want to return to me>     
+        
+       animationcontroller.forward();
+  }
+
+  void navigateToHome() {
+    Future.delayed(const Duration(seconds: 3),(){
+     Get.to(() =>const HomeView()
+     , transition: Transition.fade
+     ,duration: kTransiationDuration);
+    });
+  }
+
 }
 
