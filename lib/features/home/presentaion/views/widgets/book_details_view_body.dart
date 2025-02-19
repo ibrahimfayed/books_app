@@ -4,6 +4,7 @@ import 'package:books_app/features/home/presentaion/views/widgets/book_rating.da
 import 'package:books_app/features/home/presentaion/views/widgets/books_action.dart';
 import 'package:books_app/features/home/presentaion/views/widgets/custom_book_details_app_bar.dart';
 import 'package:books_app/features/home/presentaion/views/widgets/custom_book_image.dart';
+import 'package:books_app/features/home/presentaion/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -24,7 +25,8 @@ class BookDetailsViewBody extends StatelessWidget {
       const SizedBox(height: 32,),
         Text(
       'The Jungle Book',
-       style: Styles.textstyle30.copyWith(color: Colors.white),),
+       style: Styles.textstyle30.copyWith(
+        color: Colors.white),),
        const SizedBox(height: 13,),
        const Text('Rudyard Kipling',
        style: Styles.textstyle18,
@@ -32,11 +34,20 @@ class BookDetailsViewBody extends StatelessWidget {
       const SizedBox(height: 20,),
       const BookRating(mainAxisAlignment: MainAxisAlignment.center,),
       const SizedBox(height: 41,),
-      const BooksAction()
-
+      const BooksAction(),
+      const SizedBox(height: 50,),
+       Align(
+        alignment: Alignment.centerLeft,
+         child: Text('You can also like',
+               style: Styles.textstyle14.copyWith(
+          color: Colors.white,
+          fontWeight: FontWeight.w600),),
+       ),
+       const SizedBox(height: 14,),
+       const SimilarBooksListView(),
+       
         ],
       ),
     );
   }
 }
-
