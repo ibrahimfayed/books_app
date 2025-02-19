@@ -13,43 +13,39 @@ class SplashViewBody extends StatefulWidget {
   State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProviderStateMixin
+class _SplashViewBodyState extends State<SplashViewBody>
+    with SingleTickerProviderStateMixin
 //SingleTickerProviderStateMixin بيحدد الانسيابية
 //single because i use here one animation
 {
-  
   late AnimationController animationcontroller;
   late Animation<Offset> slidingAnimation;
 
   @override
   void initState() {
-
     super.initState();
-    initSlidingAnimation();//You need to call animationcontroller.forward() to start the animation. 
+    initSlidingAnimation(); //You need to call animationcontroller.forward() to start the animation.
     navigateToHome();
   }
 
-  
-  
   @override
   void dispose() //to not operate all time
   {
-    
     super.dispose();
     animationcontroller.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       //crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        
         Center(
           child: Image.asset(
-          width: 190,
-          AssetsData.logo,
-          fit: BoxFit.cover,
+            width: 190,
+            AssetsData.logo,
+            fit: BoxFit.cover,
           ),
         ),
         const SizedBox(
@@ -59,29 +55,29 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
       ],
     );
   }
+
   void initSlidingAnimation() {
     animationcontroller = AnimationController(
-      vsync:this,duration:const Duration(
-        seconds: 1),//the animation will run for 1 minute
-         );
+      vsync: this,
+      duration:
+          const Duration(seconds: 1), //the animation will run for 1 minute
+    );
     slidingAnimation =
-      Tween<Offset>(
-        begin:const Offset(0, 10),
-        end:Offset.zero 
-        ).animate(animationcontroller);//<here i put the type of values i want to return to me>     
-        
-       animationcontroller.forward();
+        Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero).animate(
+            animationcontroller); //<here i put the type of values i want to return to me>
+
+    animationcontroller.forward();
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 3),(){
-    //  Get.to(() =>const HomeView()
-    //  , transition: Transition.fade
-    //  ,duration: kTransiationDuration);
-    GoRouter.of(context).push(AppRouter.kHomeView);
-    },
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        //  Get.to(() =>const HomeView()
+        //  , transition: Transition.fade
+        //  ,duration: kTransiationDuration);
+        GoRouter.of(context).push(AppRouter.kHomeView);
+      },
     );
   }
-
 }
-

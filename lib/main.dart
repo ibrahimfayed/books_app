@@ -14,12 +14,13 @@ class BooklyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp.router(
+    return MaterialApp.router(
       routerConfig: AppRouter.router,
       theme: //ThemeData() to use dark mode remove these two () and add dark()
-      ThemeData.dark().copyWith(
-        scaffoldBackgroundColor:kPrimaryColor,//i put the color here because i will use it at the whole of the pages
-      textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+          ThemeData.dark().copyWith(
+        scaffoldBackgroundColor:
+            kPrimaryColor, //i put the color here because i will use it at the whole of the pages
+        textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ),
       //home:const SplashView(),
       debugShowCheckedModeBanner: false,

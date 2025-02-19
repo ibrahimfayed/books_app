@@ -15,34 +15,36 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomScrollView(
-    slivers: [
-      SliverToBoxAdapter(
-      child:  Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-        CustomAppBar(),
-        Padding(
-          padding: EdgeInsets.zero,
-          child: FeaturedBooksListView(),
-        ),
-        SizedBox(height: 45,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          child: Text('Best Seller',
-          style: Styles.textstyle18),
-        ),
-        SizedBox(height: 23,),
-         ],
-      )
-      ),
-      SliverFillRemaining(//i use  SliverFillRemaining if i don't want to build anything after BestSellerListView so i can remove shrinkWrap: true because i don't want here to build all widgets once just build shown widgets  
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          child: BestSellerListView(),
-        ),
+      slivers: [
+        SliverToBoxAdapter(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomAppBar(),
+            Padding(
+              padding: EdgeInsets.zero,
+              child: FeaturedBooksListView(),
+            ),
+            SizedBox(
+              height: 45,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Text('Best Seller', style: Styles.textstyle18),
+            ),
+            SizedBox(
+              height: 23,
+            ),
+          ],
+        )),
+        SliverFillRemaining(
+          //i use  SliverFillRemaining if i don't want to build anything after BestSellerListView so i can remove shrinkWrap: true because i don't want here to build all widgets once just build shown widgets
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: BestSellerListView(),
+          ),
         )
-    ],
+      ],
     );
-    
   }
 }
