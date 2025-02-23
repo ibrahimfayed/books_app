@@ -16,13 +16,16 @@ final BooksModel booksModel;
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        GoRouter.of(context).push(
+          AppRouter.kBookDetailsView,
+        extra: booksModel);
       },
       child: SizedBox(
         height: 125,
         child: Row(
           children: [
-            CustomBookImage(imageUrl: booksModel.volumeInfo.imageLinks.thumbnail),
+            CustomBookImage(
+              imageUrl: booksModel.volumeInfo.imageLinks?.thumbnail ??''),//in vedio 88 and i can put a url of an image in ''
             const SizedBox(
               width: 30,
             ),

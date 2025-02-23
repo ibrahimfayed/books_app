@@ -9,6 +9,7 @@ class CutomErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
+        textAlign: TextAlign.center,//it center the text inside its center box use widget inspector to show it if it is not clear
         errMessage,
       style: Styles.textstyle18,),
     );
