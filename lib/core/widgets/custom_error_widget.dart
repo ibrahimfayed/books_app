@@ -7,8 +7,10 @@ class CutomErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      errMessage,
-    style: Styles.textstyle18,);
+    return Center(
+      child: Text(
+        errMessage,
+      style: Styles.textstyle18,),
+    );
   }
 }
