@@ -1,3 +1,4 @@
+import 'package:books_app/core/utils/functions/launch_url.dart';
 import 'package:books_app/core/widgets/custom_button.dart';
 import 'package:books_app/features/home/data/models/books_model/books_model.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ final BooksModel booksModel;
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8),
+      padding:const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: [
         const  Expanded(
@@ -25,13 +26,12 @@ final BooksModel booksModel;
           ),
           Expanded(
             child: CustomButton(
-              onPressed: ()async {
-                Uri uri =Uri.parse(booksModel.volumeInfo.previewLink!); 
-                if (await canLaunchUrl(uri)) {
-                    await launchUrl(uri);
-                  }else{}
+              onPressed: () {
+                CustomLaunchUrl(context,
+                 booksModel.volumeInfo.previewLink!
+                 );
               },
-              text: 'Free preview',
+              text: getText(booksModel),
               fontsize: 16,
               backgroundColor:const Color(0xffEF8262),
               textcolor: Colors.white,
@@ -43,5 +43,14 @@ final BooksModel booksModel;
         ],
       ),
     );
+  }
+  
+ String getText(BooksModel booksModel) {
+if (booksModel.volumeInfo.imageLinks==null) {
+  return 'Not Available';
+}else {
+  return 'Preview';
+}
+
   }
 }
